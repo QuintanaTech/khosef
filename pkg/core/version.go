@@ -1,4 +1,4 @@
-package about
+package core
 
 import (
 	ver "github.com/hashicorp/go-version"

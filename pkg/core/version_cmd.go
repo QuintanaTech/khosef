@@ -1,4 +1,4 @@
-package about
+package core
 
 import (
 	"fmt"
@@ -21,6 +21,16 @@ func NewVersionCommand() *cobra.Command {
 
 func (v *VersionCmd) Run() error {
 	fmt.Println("Using kh version:", v.version.GetCurrent())
+
+	release, _, err := getLatestRelease()
+	if err != nil {
+		return err
+	}
+
+	currentVer := NewVersion()
+	if currentVer.IsNewer(*release.TagName) {
+		fmt.Println("There is a newer version available:", *release.TagName)
+	}
 
 	return nil
 }

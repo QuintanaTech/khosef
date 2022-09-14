@@ -9,7 +9,6 @@ import (
 	"github.com/spf13/cobra"
 	"io"
 	"io/ioutil"
-	"khosef/pkg/about"
 	"khosef/pkg/cmd"
 	"net/http"
 	"os"
@@ -53,7 +52,7 @@ func (s *SelfUpdateCommand) Run() error {
 		return err
 	}
 
-	currentVersion := about.NewVersion()
+	currentVersion := NewVersion()
 	if !currentVersion.IsNewer(*latestRelease.TagName) {
 		fmt.Println("No newer versions available")
 

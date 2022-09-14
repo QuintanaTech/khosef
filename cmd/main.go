@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/spf13/cobra"
-	"khosef/pkg/about"
 	"khosef/pkg/core"
 	"khosef/pkg/secrets"
 	"os"
@@ -19,7 +18,7 @@ var (
 
 func init() {
 	pwd, _ := os.Getwd()
-	rootCmd.AddCommand(about.NewVersionCommand())
+	rootCmd.AddCommand(core.NewVersionCommand())
 	rootCmd.AddCommand(core.NewInitializerCommand(&contextDir))
 	rootCmd.AddCommand(secrets.NewSecretsCommand(&contextDir, &verbose))
 	rootCmd.AddCommand(core.NewSelfUpdateCommand(&verbose))
