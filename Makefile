@@ -8,8 +8,8 @@ else
 endif
 
 build: .version
-	env GOOS=linux GOARCH=amd64 go build -ldflags="-X 'khosef/pkg/about.version=$(shell cat .version)'" -o build/khosef-linux-amd64 ./cmd
-	env GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'khosef/pkg/about.version=$(shell cat .version)'" -o build/khosef-darwin-amd64 ./cmd
+	env GOOS=linux GOARCH=amd64 go build -ldflags="-X 'khosef/pkg/core.version=$(shell cat .version)'" -o build/khosef-linux-amd64 ./cmd
+	env GOOS=darwin GOARCH=amd64 go build -ldflags="-X 'khosef/pkg/core.version=$(shell cat .version)'" -o build/khosef-darwin-amd64 ./cmd
 	env GOOS=linux GOARCH=amd64 go build -o build/kh-aws-linux-amd64 ./ext/aws/cmd
 	env GOOS=darwin GOARCH=amd64 go build -o build/kh-aws-darwin-amd64 ./ext/aws/cmd
 
