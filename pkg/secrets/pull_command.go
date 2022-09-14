@@ -1,11 +1,10 @@
 package secrets
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 	"khosef/pkg/cmd"
 	"khosef/pkg/config"
-	"os/exec"
+	"khosef/pkg/plugin"
 )
 
 type PullCommand struct {
@@ -38,14 +37,7 @@ func (p *PullCommand) Run() error {
 		return err
 	}
 
-	args := append([]string{"pull"}, "--context", *p.contextDir)
-	args = append(args, p.args...)
-	b, err := exec.Command(fmt.Sprintf("kh-%s", c.Provider), args...).Output()
-	if err != nil {
-		return err
-	}
+	i := plugin.NewPlugin(c)
 
-	fmt.Println(string(b))
-
-	return nil
+	return i.Execute("pull", p.args)
 }

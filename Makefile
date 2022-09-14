@@ -14,7 +14,7 @@ build: .version
 	env GOOS=darwin GOARCH=amd64 go build -o build/kh-aws-darwin-amd64 ./ext/aws/cmd
 
 test:
-	echo "tests are for the weak"
+	go test ./...
 
 .version:
 	echo "0.0+dev-$(shell date +%s)-build" > .version
