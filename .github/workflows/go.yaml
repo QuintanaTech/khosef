@@ -26,3 +26,9 @@ jobs:
 
       - name: Build
         run: make
+        
+      - name: Publish binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: khosef
+          path: build/
