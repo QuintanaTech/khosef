@@ -22,6 +22,7 @@ func init() {
 	rootCmd.AddCommand(about.NewVersionCommand())
 	rootCmd.AddCommand(core.NewInitializerCommand(&contextDir))
 	rootCmd.AddCommand(secrets.NewSecretsCommand(&contextDir, &verbose))
+	rootCmd.AddCommand(core.NewSelfUpdateCommand(&verbose))
 
 	rootCmd.PersistentFlags().StringVarP(&contextDir, "context", "C", pwd, "Context directory to run in")
 	rootCmd.PersistentFlags().BoolVarP(&verbose, "verbose", "v", false, "")
