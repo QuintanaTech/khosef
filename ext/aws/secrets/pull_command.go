@@ -82,7 +82,12 @@ func (c *PullCommand) fetchToFile(d *cnf.SecretDefinition) error {
 		}
 	}
 
-	err = os.WriteFile(p, []byte(aws.ToString(s.SecretString)), 0644)
+	if len(s.SecretBinary) > 0 {
+		err = os.WriteFile(p, s.SecretBinary, 0644)
+	} else {
+		err = os.WriteFile(p, []byte(aws.ToString(s.SecretString)), 0644)
+	}
+
 	if err != nil {
 		return err
 	}
